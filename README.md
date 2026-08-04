@@ -1,2 +1,0 @@
-# kodama-website
-Kodama Woodwork
