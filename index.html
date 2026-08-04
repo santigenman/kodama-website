@@ -8,10 +8,32 @@
   <style>
     /* ─── Fonts ─────────────────────────────────────────────── */
     @font-face {
-      font-family: 'Nopal';
-      src: url('assets/fonts/Nopal.otf') format('opentype');
-      font-weight: normal;
+      font-family: 'IBM Plex Mono';
+      src: url('assets/fonts/IBMPlexMono-400.woff2') format('woff2');
+      font-weight: 400;
       font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'IBM Plex Mono';
+      src: url('assets/fonts/IBMPlexMono-500.woff2') format('woff2');
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'IBM Plex Mono';
+      src: url('assets/fonts/IBMPlexMono-600.woff2') format('woff2');
+      font-weight: 600;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'IBM Plex Mono';
+      src: url('assets/fonts/IBMPlexMono-700.woff2') format('woff2');
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
     }
 
     /* ─── Reset ─────────────────────────────────────────────── */
@@ -26,8 +48,8 @@
       --ink:     #0F0F0F;
       --muted:   #7A7168;
       --border:  #D5CCBf;
-      --serif:   'Nopal', 'Helvetica Neue', Arial, sans-serif;
-      --sans:    'Helvetica Neue', Arial, sans-serif;
+      --serif:   'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+      --sans:    'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
     }
 
     /* ─── Base ───────────────────────────────────────────────── */
@@ -73,11 +95,12 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(to bottom, rgba(240,234,224,0.85) 0%, rgba(240,234,224,0) 100%);
+      background: rgba(255,255,255,0.55);
+      box-shadow: 0 1px 6px rgba(0,0,0,0.05);
       pointer-events: none;
     }
     .nav-logo img {
-      height: 28px;
+      height: 19px;
       position: relative;
     }
     .nav-links {
@@ -108,10 +131,10 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: 28% 32%;
+      object-position: 50% 50%;
     }
     @media (max-width: 700px) {
-      .hero-bg { object-position: 20% 40%; }
+      .hero-bg { object-position: 50% 50%; }
     }
     .hero-overlay {
       position: absolute;
@@ -132,28 +155,30 @@
       padding: 64px 52px;
       color: #fff;
     }
-    .hero-body h1 {
-      font-family: var(--serif);
-      font-size: clamp(56px, 10vw, 120px);
-      line-height: 0.95;
-      letter-spacing: -0.01em;
-      font-weight: normal;
+    .hero-subtitle {
+      max-width: 360px;
+      font-size: 15px;
+      line-height: 1.5;
+      color: #fff;
     }
-    .hero-sub {
-      margin-top: 20px;
-      font-size: 11px;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      opacity: 0.75;
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
     }
     .hero-kanji {
       position: absolute;
-      top: 52px;
-      right: 52px;
-      font-size: 52px;
-      opacity: 0.6;
-      line-height: 1;
-      letter-spacing: 0.1em;
+      bottom: 64px;
+      right: 100px;
+      height: 45px;
+      width: auto;
+      opacity: 1;
     }
     .hero-location {
       position: absolute;
@@ -165,32 +190,6 @@
       opacity: 0.55;
       writing-mode: vertical-rl;
       text-orientation: mixed;
-    }
-
-    /* ─── Ticker ─────────────────────────────────────────────── */
-    .ticker-wrap {
-      overflow: hidden;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      padding: 14px 0;
-      background: var(--cream);
-    }
-    .ticker-track {
-      display: flex;
-      width: max-content;
-      animation: ticker 28s linear infinite;
-    }
-    .ticker-track span {
-      font-size: 10px;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      color: var(--muted);
-      white-space: nowrap;
-      padding: 0 48px;
-    }
-    @keyframes ticker {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-50%); }
     }
 
     /* ─── Sections ───────────────────────────────────────────── */
@@ -206,9 +205,9 @@
     }
     .about-text h2 {
       font-family: var(--serif);
-      font-size: clamp(28px, 3.5vw, 52px);
-      line-height: 1.1;
-      font-weight: normal;
+      font-size: clamp(20px, 2.4vw, 38px);
+      line-height: 1.15;
+      font-weight: 600;
       margin-bottom: 32px;
     }
     .about-text p {
@@ -220,7 +219,7 @@
     .about-img {
       width: 100%;
       height: auto;
-      aspect-ratio: 3/4;
+      aspect-ratio: 1/1;
       object-fit: cover;
     }
 
@@ -252,7 +251,7 @@
     .service-card h3 {
       font-family: var(--serif);
       font-size: clamp(22px, 2.5vw, 34px);
-      font-weight: normal;
+      font-weight: 600;
       line-height: 1.1;
       margin-bottom: 20px;
     }
@@ -267,21 +266,23 @@
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
+      margin-top: 56px;
       margin-bottom: 56px;
     }
     .work-intro h2 {
       font-family: var(--serif);
-      font-size: clamp(28px, 3.5vw, 52px);
-      font-weight: normal;
-      line-height: 1.1;
+      font-size: clamp(20px, 2.4vw, 38px);
+      font-weight: 600;
+      line-height: 1.15;
       max-width: 480px;
     }
     .work-intro p {
       font-size: 13px;
       color: var(--muted);
-      max-width: 280px;
+      max-width: 300px;
       text-align: right;
       line-height: 1.7;
+      text-wrap: balance;
     }
     .work-grid {
       display: grid;
@@ -312,19 +313,32 @@
 
     /* ─── Quote ──────────────────────────────────────────────── */
     .quote-section {
+      position: relative;
       text-align: center;
       padding: 128px 52px;
+      overflow: hidden;
+    }
+    .quote-woodslice {
+      position: absolute;
+      bottom: 0;
+      right: -100px;
+      transform: translateY(50%);
+      width: clamp(500px, 60vw, 900px);
+      height: auto;
+      opacity: 0.15;
+      pointer-events: none;
     }
     .quote-kanji {
-      font-size: 48px;
-      letter-spacing: 0.25em;
-      opacity: 0.18;
-      margin-bottom: 40px;
+      height: 56px;
+      width: auto;
+      opacity: 1;
+      margin: 0 auto 40px;
+      display: block;
     }
     .quote-section blockquote {
       font-family: var(--serif);
       font-size: clamp(24px, 3.5vw, 48px);
-      font-weight: normal;
+      font-weight: 600;
       line-height: 1.25;
       max-width: 820px;
       margin: 0 auto 40px;
@@ -347,9 +361,9 @@
     }
     .contact-text h2 {
       font-family: var(--serif);
-      font-size: clamp(28px, 3.5vw, 52px);
-      font-weight: normal;
-      line-height: 1.1;
+      font-size: clamp(20px, 2.4vw, 38px);
+      font-weight: 600;
+      line-height: 1.15;
       margin: 24px 0 48px;
     }
     .contact-fields {
@@ -450,7 +464,7 @@
   <!-- ─── Navigation ─────────────────────────────────────── -->
   <nav>
     <a class="nav-logo" href="#">
-      <img src="assets/images/logo-wordmark.png" alt="KODAMA" />
+      <img src="assets/images/logo-wordmark-v2.png" alt="KODAMA" />
     </a>
     <ul class="nav-links">
       <li><a href="#work">Work</a></li>
@@ -462,34 +476,16 @@
   <!-- ─── Hero ──────────────────────────────────────────── -->
   <div class="hero">
     <picture>
-      <source type="image/webp" srcset="assets/images/chair-spalted-480.webp 480w, assets/images/chair-spalted-800.webp 800w, assets/images/chair-spalted-1200.webp 1200w, assets/images/chair-spalted-1600.webp 1600w, assets/images/chair-spalted-2200.webp 2200w" sizes="100vw">
-      <img class="hero-bg" src="assets/images/chair-spalted-1600.jpg" srcset="assets/images/chair-spalted-480.jpg 480w, assets/images/chair-spalted-800.jpg 800w, assets/images/chair-spalted-1200.jpg 1200w, assets/images/chair-spalted-1600.jpg 1600w, assets/images/chair-spalted-2200.jpg 2200w" sizes="100vw" alt="KODAMA chair, solid figured wood" width="5134" height="3423" fetchpriority="high" />
+      <source type="image/webp" srcset="assets/images/hero-center-landing-480.webp 480w, assets/images/hero-center-landing-800.webp 800w, assets/images/hero-center-landing-1200.webp 1200w, assets/images/hero-center-landing-1366.webp 1366w" sizes="100vw">
+      <img class="hero-bg" src="assets/images/hero-center-landing-1366.jpg" srcset="assets/images/hero-center-landing-480.jpg 480w, assets/images/hero-center-landing-800.jpg 800w, assets/images/hero-center-landing-1200.jpg 1200w, assets/images/hero-center-landing-1366.jpg 1366w" sizes="100vw" alt="KODAMA console cabinet in mixed wood, tatami room" width="1366" height="768" fetchpriority="high" />
     </picture>
     <div class="hero-overlay"></div>
     <div class="hero-body">
-      <h1>KODAMA</h1>
-      <p class="hero-sub">Design Studio_ &amp; Custom Furniture</p>
+      <h1 class="sr-only">Kodama</h1>
+      <p class="hero-subtitle">A design and fabrication studio<br>creating bespoke woodwork</p>
     </div>
-    <div class="hero-kanji">木 魂</div>
+    <img class="hero-kanji" src="assets/images/mark-light.png" alt="Kodama mark" />
     <div class="hero-location">Todos Santos · BCS · Mexico</div>
-  </div>
-
-  <!-- ─── Ticker ─────────────────────────────────────────── -->
-  <div class="ticker-wrap">
-    <div class="ticker-track">
-      <span>Design Studio</span><span>·</span>
-      <span>Custom Furniture</span><span>·</span>
-      <span>Solid Wood</span><span>·</span>
-      <span>Traditional Joinery</span><span>·</span>
-      <span>Todos Santos, BCS</span><span>·</span>
-      <span>Hecho a mano</span><span>·</span>
-      <span>Design Studio</span><span>·</span>
-      <span>Custom Furniture</span><span>·</span>
-      <span>Solid Wood</span><span>·</span>
-      <span>Traditional Joinery</span><span>·</span>
-      <span>Todos Santos, BCS</span><span>·</span>
-      <span>Hecho a mano</span><span>·</span>
-    </div>
   </div>
 
   <!-- ─── About ─────────────────────────────────────────── -->
@@ -497,17 +493,13 @@
     <p class="label">01 — About</p>
     <div class="about-grid">
       <div class="about-text">
-        <h2>Wood has<br>a spirit.<br>We listen<br>to it.</h2>
-        <p>Kodama is a design and woodworking studio based in Todos Santos, Baja California Sur.</p>
-        <p>We design and build custom furniture, kitchens, cabinetry, doors, and architectural millwork for residential and commercial spaces. Every project is made to order, combining thoughtful design, traditional craftsmanship, and modern fabrication techniques.</p>
-        <p>Rather than producing standard pieces, we work closely with architects, interior designers, and homeowners to develop solutions that respond to each space and the way it will be lived in. From the first sketch to the final installation, every detail is considered with longevity, function, and material integrity in mind.</p>
-        <p>Wood is at the center of our work. We believe it deserves to be understood, respected, and used honestly. Every board has its own character, and every project is an opportunity to create something that feels timeless rather than temporary.</p>
-        <p>The name Kodama comes from Japanese folklore, where a kodama is the spirit that inhabits a tree. It reflects our respect for the material and our belief that well-crafted objects carry a lasting presence long after they leave the workshop.</p>
-        <p>Based in Todos Santos since 2018, we work on projects throughout Baja California Sur and beyond.</p>
+        <h2>Thoughtfully designed.<br>Precisely crafted.<br>Built to last.</h2>
+        <p>We're a design and fabrication studio creating bespoke furniture, cabinetry, kitchens, doors, and architectural millwork that balance timeless design, exceptional craftsmanship, and enduring materials.</p>
+        <p>Based in Todos Santos, Baja California Sur.</p>
       </div>
       <picture>
-        <source type="image/webp" srcset="assets/images/stool-tripod-480.webp 480w, assets/images/stool-tripod-800.webp 800w, assets/images/stool-tripod-1200.webp 1200w, assets/images/stool-tripod-1600.webp 1600w" sizes="(max-width: 900px) 100vw, 50vw">
-        <img class="about-img" src="assets/images/stool-tripod-1200.jpg" srcset="assets/images/stool-tripod-480.jpg 480w, assets/images/stool-tripod-800.jpg 800w, assets/images/stool-tripod-1200.jpg 1200w, assets/images/stool-tripod-1600.jpg 1600w" sizes="(max-width: 900px) 100vw, 50vw" alt="Geometric tripod stool in mixed solid hardwood" width="3633" height="4541" loading="lazy" />
+        <source type="image/webp" srcset="assets/images/stool-square-480.webp 480w, assets/images/stool-square-800.webp 800w, assets/images/stool-square-1200.webp 1200w, assets/images/stool-square-1600.webp 1600w, assets/images/stool-square-2200.webp 2200w" sizes="(max-width: 900px) 100vw, 50vw">
+        <img class="about-img" src="assets/images/stool-square-1200.jpg" srcset="assets/images/stool-square-480.jpg 480w, assets/images/stool-square-800.jpg 800w, assets/images/stool-square-1200.jpg 1200w, assets/images/stool-square-1600.jpg 1600w, assets/images/stool-square-2200.jpg 2200w" sizes="(max-width: 900px) 100vw, 50vw" alt="Geometric tripod stool in mixed solid hardwood" width="2589" height="2588" loading="lazy" />
       </picture>
     </div>
   </section>
@@ -538,53 +530,13 @@
 
   <!-- ─── Work ───────────────────────────────────────────── -->
   <section id="work">
+    <p class="label">03 — Portfolio</p>
     <div class="work-intro">
-      <h2>Selected<br>Work</h2>
+      <h2>Featured<br>Work</h2>
       <p>A collection of custom pieces designed and fabricated at Estudio Kodama.</p>
     </div>
-    <p class="label">03 — Portfolio</p>
 
     <div class="work-grid" style="margin-top: 40px;">
-
-      <div class="work-item w-7">
-        <picture>
-          <source type="image/webp" srcset="assets/images/table-round-pedestal-480.webp 480w, assets/images/table-round-pedestal-800.webp 800w, assets/images/table-round-pedestal-864.webp 864w" sizes="(max-width: 900px) 100vw, 58vw">
-          <img src="assets/images/table-round-pedestal-800.jpg" srcset="assets/images/table-round-pedestal-480.jpg 480w, assets/images/table-round-pedestal-800.jpg 800w, assets/images/table-round-pedestal-864.jpg 864w" sizes="(max-width: 900px) 100vw, 58vw" alt="Table Suzanne — round pedestal dining table in solid wood" width="864" height="1184" loading="lazy" />
-        </picture>
-        <p class="work-caption">Table Suzanne — Round pedestal, solid wood</p>
-      </div>
-
-      <div class="work-item w-5">
-        <picture>
-          <source type="image/webp" srcset="assets/images/chair-spalted-480.webp 480w, assets/images/chair-spalted-800.webp 800w, assets/images/chair-spalted-1200.webp 1200w">
-          <img src="assets/images/chair-spalted-800.jpg" srcset="assets/images/chair-spalted-480.jpg 480w, assets/images/chair-spalted-800.jpg 800w, assets/images/chair-spalted-1200.jpg 1200w" sizes="(max-width: 900px) 100vw, 42vw" alt="Chair with figured wood backrest panel" width="5134" height="3423" loading="lazy" />
-        </picture>
-        <p class="work-caption">Chair — Figured wood backrest</p>
-      </div>
-
-      <div class="work-item w-5">
-        <picture>
-          <source type="image/webp" srcset="assets/images/bench-walnut-480.webp 480w, assets/images/bench-walnut-800.webp 800w, assets/images/bench-walnut-1200.webp 1200w">
-          <img src="assets/images/bench-walnut-800.jpg" srcset="assets/images/bench-walnut-480.jpg 480w, assets/images/bench-walnut-800.jpg 800w, assets/images/bench-walnut-1200.jpg 1200w" sizes="(max-width: 900px) 100vw, 42vw" alt="Bench in two-tone walnut" width="3544" height="4430" loading="lazy" />
-        </picture>
-        <p class="work-caption">Bench — Two-tone walnut</p>
-      </div>
-
-      <div class="work-item w-7">
-        <picture>
-          <source type="image/webp" srcset="assets/images/table-arched-480.webp 480w, assets/images/table-arched-800.webp 800w, assets/images/table-arched-832.webp 832w">
-          <img src="assets/images/table-arched-800.jpg" srcset="assets/images/table-arched-480.jpg 480w, assets/images/table-arched-800.jpg 800w, assets/images/table-arched-832.jpg 832w" sizes="(max-width: 900px) 100vw, 58vw" alt="Table Lindsay — arch-leg dining table in solid wood" width="832" height="1248" loading="lazy" />
-        </picture>
-        <p class="work-caption">Table Lindsay — Arch joinery, solid wood</p>
-      </div>
-
-      <div class="work-item w-4">
-        <picture>
-          <source type="image/webp" srcset="assets/images/lamp-lantern-480.webp 480w, assets/images/lamp-lantern-669.webp 669w">
-          <img src="assets/images/lamp-lantern-480.jpg" srcset="assets/images/lamp-lantern-480.jpg 480w, assets/images/lamp-lantern-669.jpg 669w" sizes="(max-width: 900px) 100vw, 33vw" alt="Lamp MJ — wood and textile lantern lamp" width="669" height="970" loading="lazy" />
-        </picture>
-        <p class="work-caption">Lamp MJ — Wood &amp; textile</p>
-      </div>
 
       <div class="work-item w-4">
         <picture>
@@ -602,20 +554,12 @@
         <p class="work-caption">Coffee Table — Live-edge round slab</p>
       </div>
 
-      <div class="work-item w-6 ar-169">
+      <div class="work-item w-4">
         <picture>
-          <source type="image/webp" srcset="assets/images/console-tatami-480.webp 480w, assets/images/console-tatami-748.webp 748w">
-          <img src="assets/images/console-tatami-480.jpg" srcset="assets/images/console-tatami-480.jpg 480w, assets/images/console-tatami-748.jpg 748w" sizes="(max-width: 900px) 100vw, 50vw" alt="Console Kelly — custom storage cabinet in mixed wood" width="748" height="1131" loading="lazy" />
+          <source type="image/webp" srcset="assets/images/bench-walnut-480.webp 480w, assets/images/bench-walnut-800.webp 800w, assets/images/bench-walnut-1200.webp 1200w">
+          <img src="assets/images/bench-walnut-800.jpg" srcset="assets/images/bench-walnut-480.jpg 480w, assets/images/bench-walnut-800.jpg 800w, assets/images/bench-walnut-1200.jpg 1200w" sizes="(max-width: 900px) 100vw, 33vw" alt="Bench in two-tone walnut" width="3544" height="4430" loading="lazy" />
         </picture>
-        <p class="work-caption">Console Kelly — Custom storage</p>
-      </div>
-
-      <div class="work-item w-6 ar-169">
-        <picture>
-          <source type="image/webp" srcset="assets/images/stool-tripod-480.webp 480w, assets/images/stool-tripod-800.webp 800w, assets/images/stool-tripod-1200.webp 1200w">
-          <img src="assets/images/stool-tripod-800.jpg" srcset="assets/images/stool-tripod-480.jpg 480w, assets/images/stool-tripod-800.jpg 800w, assets/images/stool-tripod-1200.jpg 1200w" sizes="(max-width: 900px) 100vw, 50vw" alt="Tripod stool, geometric mixed hardwood" width="3633" height="4541" loading="lazy" />
-        </picture>
-        <p class="work-caption">Stool — Geometric, mixed hardwood</p>
+        <p class="work-caption">Bench — Two-tone walnut</p>
       </div>
 
     </div>
@@ -625,11 +569,15 @@
 
   <!-- ─── Quote ─────────────────────────────────────────── -->
   <div class="quote-section">
-    <div class="quote-kanji">木 魂</div>
+    <img class="quote-kanji" src="assets/images/mark-dark.png" alt="Kodama mark" />
     <blockquote>
       "Objects that celebrate the inherent beauty of solid wood and traditional joinery."
     </blockquote>
     <cite>Santiago Gendelman — Estudio Kodama</cite>
+    <picture>
+      <source type="image/webp" srcset="assets/images/woodslice-300.webp 300w, assets/images/woodslice-500.webp 500w, assets/images/woodslice-800.webp 800w, assets/images/woodslice-1265.webp 1265w" sizes="420px">
+      <img class="quote-woodslice" src="assets/images/woodslice-500.png" srcset="assets/images/woodslice-300.png 300w, assets/images/woodslice-500.png 500w, assets/images/woodslice-800.png 800w, assets/images/woodslice-1265.png 1265w" sizes="420px" alt="" width="1265" height="1255" loading="lazy" />
+    </picture>
   </div>
 
   <div class="divider"></div>
