@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kodama Woodwork — Custom Kitchens, Closets, Doors &amp; Furniture · Todos Santos</title>
+  <meta name="description" content="Kodama is a design and woodworking studio in Todos Santos, Baja California Sur. Custom kitchens, closets, built-ins, doors, vanities and one-of-a-kind furniture — designed, built and installed by our own workshop." />
+  <meta property="og:title" content="Kodama Woodwork — Todos Santos, BCS" />
+  <meta property="og:description" content="Custom kitchens, closets, doors and furniture, made in our Todos Santos workshop." />
+  <meta property="og:image" content="assets/img/kitchen-view-1600.webp" />
+  <meta property="og:type" content="website" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HomeAndConstructionBusiness",
+    "name": "Kodama Woodwork",
+    "description": "Design and woodworking studio: custom kitchens, closets, doors, built-ins and furniture.",
+    "address": { "@type": "PostalAddress", "addressLocality": "Todos Santos", "addressRegion": "Baja California Sur", "addressCountry": "MX" },
+    "telephone": "+52 612 168 6201",
+    "email": "kodamabaja@gmail.com",
+    "areaServed": ["Todos Santos", "El Pescadero", "La Paz", "Los Cabos"],
+    "sameAs": ["https://www.instagram.com/kodama_woodwork/"]
+  }
+  </script>
+  <style>
+    @font-face { font-family: 'IBM Plex Mono'; src: url('assets/fonts/IBMPlexMono-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+    @font-face { font-family: 'IBM Plex Mono'; src: url('assets/fonts/IBMPlexMono-500.woff2') format('woff2'); font-weight: 500; font-display: swap; }
+    @font-face { font-family: 'IBM Plex Mono'; src: url('assets/fonts/IBMPlexMono-600.woff2') format('woff2'); font-weight: 600; font-display: swap; }
+
+    /* ─── Reset ─────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+    button, input, select, textarea { font: inherit; color: inherit; }
+
+    /* ─── Tokens ─────────────────────────────────────────────── */
+    :root {
+      --cream:  #F0EAE0;
+      --paper:  #F7F3EC;
+      --ink:    #0F0F0F;
+      --muted:  #7A7168;
+      --body:   #504840;
+      --border: #D5CCBF;
+      --wood:   #8A5A36;
+      --mono:   'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+      --pad:    52px;
+    }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: var(--mono);
+      font-size: 15px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── Utility ────────────────────────────────────────────── */
+    .label {
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .label::after { content: ''; width: 32px; height: 1px; background: var(--border); }
+    .h2 {
+      font-size: clamp(22px, 2.6vw, 40px);
+      font-weight: 600;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+    }
+    .lede { color: var(--body); max-width: 520px; line-height: 1.85; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 28px;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      border: 1px solid var(--ink);
+      background: var(--ink);
+      color: var(--cream);
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn:hover { background: #2A2520; }
+    .btn.ghost { background: transparent; color: var(--ink); }
+    .btn.ghost:hover { background: var(--ink); color: var(--cream); }
+    .btn.light { background: var(--cream); color: var(--ink); border-color: var(--cream); }
+    .btn.light:hover { background: #fff; }
+    .btn.outline-light { background: transparent; color: #fff; border-color: rgba(255,255,255,0.7); }
+    .btn.outline-light:hover { background: rgba(255,255,255,0.12); }
+    section { padding: 112px var(--pad); }
+
+    /* ─── Nav ────────────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 200;
+      padding: 20px var(--pad);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+    nav.solid { background: rgba(240,234,224,0.94); backdrop-filter: blur(8px); box-shadow: 0 1px 0 var(--border); }
+    .nav-logo img { height: 19px; }
+    .nav-logo .on-dark { display: block; }
+    .nav-logo .on-light { display: none; }
+    nav.solid .nav-logo .on-dark { display: none; }
+    nav.solid .nav-logo .on-light { display: block; }
+    .nav-links { list-style: none; display: flex; gap: 36px; align-items: center; }
+    .nav-links a {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #fff;
+      transition: opacity 0.2s;
+    }
+    nav.solid .nav-links a { color: var(--ink); }
+    .nav-links a:hover { opacity: 0.55; }
+    .ig { width: 18px; height: 18px; display: block; }
+    .nav-ig { display: flex; align-items: center; gap: 8px; }
+    .contact-ig, footer .footer-ig { display: inline-flex; align-items: center; gap: 8px; }
+    footer .ig { width: 20px; height: 20px; }
+    .nav-links .nav-cta {
+      border: 1px solid currentColor;
+      padding: 10px 16px;
+    }
+    .nav-toggle {
+      display: none;
+      width: 44px; height: 44px;
+      background: none; border: none; cursor: pointer;
+      position: relative; z-index: 210;
+    }
+    .nav-toggle span { display: block; width: 22px; height: 2px; background: #fff; margin: 5px auto; transition: transform 0.25s, opacity 0.25s; }
+    nav.solid .nav-toggle span, .nav-toggle.open span { background: var(--ink); }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ─── Hero ───────────────────────────────────────────────── */
+    .hero { position: relative; height: 100svh; min-height: 620px; overflow: hidden; color: #fff; }
+    .hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 60%; }
+    .hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(15,15,15,0.45) 0%, rgba(15,15,15,0.05) 35%, rgba(15,15,15,0.72) 100%);
+    }
+    .hero-body {
+      position: absolute; inset: auto 0 0 0; z-index: 1;
+      padding: 0 var(--pad) 64px;
+      display: flex; justify-content: space-between; align-items: flex-end; gap: 40px;
+    }
+    .hero h1 {
+      font-size: clamp(26px, 3.6vw, 52px);
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -0.015em;
+      max-width: 820px;
+    }
+    .hero p { margin-top: 20px; max-width: 520px; font-size: 15px; opacity: 0.9; }
+    .hero-actions { display: flex; gap: 12px; margin-top: 32px; flex-wrap: wrap; }
+    .hero-loc {
+      font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.7;
+      writing-mode: vertical-rl; white-space: nowrap;
+    }
+
+    /* ─── Trust strip ────────────────────────────────────────── */
+    .strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-bottom: 1px solid var(--border);
+    }
+    .strip div {
+      padding: 26px var(--pad);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--body);
+      border-left: 1px solid var(--border);
+    }
+    .strip div:first-child { border-left: none; }
+    .strip strong { display: block; font-size: 13px; color: var(--ink); font-weight: 600; letter-spacing: 0.04em; margin-bottom: 4px; }
+
+    /* ─── Two paths ──────────────────────────────────────────── */
+    .paths-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 40px; margin: 48px 0 48px; }
+    .paths { display: grid; grid-template-columns: 1.35fr 1fr; gap: 16px; }
+    .path {
+      position: relative;
+      display: block;
+      overflow: hidden;
+      color: #fff;
+      min-height: 560px;
+    }
+    .path img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94); }
+    .path:hover img { transform: scale(1.03); }
+    .path::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(15,15,15,0) 35%, rgba(15,15,15,0.78) 100%); }
+    .path-body { position: absolute; inset: auto 0 0 0; z-index: 1; padding: 36px; }
+    .path-tag { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; opacity: 0.8; }
+    .path h3 { font-size: clamp(22px, 2.4vw, 34px); font-weight: 600; line-height: 1.1; margin: 12px 0 12px; }
+    .path p { font-size: 14px; opacity: 0.88; max-width: 440px; }
+    .path-more { display: inline-block; margin-top: 20px; font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; border-bottom: 1px solid rgba(255,255,255,0.6); padding-bottom: 4px; }
+
+    /* ─── Custom work ────────────────────────────────────────── */
+    #custom { background: var(--paper); }
+    .sec-head { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: end; margin: 48px 0 56px; }
+    .cats { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px; }
+    .cats button {
+      padding: 10px 16px;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      border: 1px solid var(--border);
+      background: transparent;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .cats button:hover { border-color: var(--ink); }
+    .cats button[aria-pressed="true"] { background: var(--ink); color: var(--cream); border-color: var(--ink); }
+    .gallery { columns: 3; column-gap: 12px; }
+    .gallery figure {
+      break-inside: avoid;
+      margin-bottom: 12px;
+      cursor: zoom-in;
+      overflow: hidden;
+      position: relative;
+    }
+    .gallery figure[hidden] { display: none; }
+    .gallery img { width: 100%; height: auto; transition: transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94); background: var(--border); }
+    .gallery figure:hover img { transform: scale(1.03); }
+    .gallery figcaption {
+      position: absolute; left: 0; right: 0; bottom: 0;
+      padding: 28px 14px 12px;
+      font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: #fff;
+      background: linear-gradient(to top, rgba(15,15,15,0.65), rgba(15,15,15,0));
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .gallery figure:hover figcaption { opacity: 1; }
+
+    /* Featured project */
+    .project {
+      margin-top: 96px;
+      display: grid;
+      grid-template-columns: 5fr 7fr;
+      gap: 56px;
+      align-items: start;
+    }
+    .project-text { position: sticky; top: 110px; }
+    .project-text .h2 { margin: 20px 0 20px; }
+    .project-specs { margin-top: 32px; border-top: 1px solid var(--border); }
+    .project-specs div { display: flex; justify-content: space-between; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
+    .project-specs span:first-child { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); padding-top: 2px; }
+    .project-imgs { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .project-imgs img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 4/3; cursor: zoom-in; }
+    .project-imgs .wide { grid-column: span 2; }
+    .project-imgs .wide img { aspect-ratio: 16/10; }
+    .project-imgs img.tall { aspect-ratio: 3/4; }
+
+    .custom-cta {
+      margin-top: 96px;
+      padding: 48px;
+      border: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center; gap: 32px;
+      background: var(--cream);
+    }
+    .custom-cta p { max-width: 560px; color: var(--body); }
+    .custom-cta strong { display: block; color: var(--ink); font-size: 18px; margin-bottom: 6px; }
+
+    /* ─── Process ────────────────────────────────────────────── */
+    #process { background: var(--ink); color: var(--cream); }
+    #process .label { color: #8A8178; }
+    #process .label::after { background: #3A3530; }
+    #process .lede { color: #A89F95; }
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 64px; border-top: 1px solid #2A2520; }
+    .step { padding: 36px 32px 0 0; }
+    .step + .step { padding-left: 32px; border-left: 1px solid #2A2520; }
+    .step-num { font-size: 10px; letter-spacing: 0.2em; color: #6A6258; }
+    .step h3 { font-size: 20px; font-weight: 600; margin: 24px 0 12px; line-height: 1.2; }
+    .step p { font-size: 13px; color: #A89F95; line-height: 1.8; }
+    .shop { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 12px; margin-top: 80px; }
+    .shop img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 4/5; filter: grayscale(1); }
+    .shop img:first-child { aspect-ratio: auto; }
+
+    /* ─── Furniture ──────────────────────────────────────────── */
+    .pieces { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px 16px; }
+    .piece-img { overflow: hidden; aspect-ratio: 4/5; background: var(--border); cursor: zoom-in; }
+    .piece-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94); }
+    .piece:hover .piece-img img { transform: scale(1.04); }
+    .piece-meta { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-top: 14px; }
+    .piece h3 { font-size: 13px; font-weight: 600; letter-spacing: 0.04em; }
+    .piece .wood { font-size: 11px; color: var(--muted); margin-top: 2px; }
+    .piece .ask {
+      font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; white-space: nowrap;
+      border-bottom: 1px solid var(--ink); padding-bottom: 2px;
+    }
+    .piece .ask:hover { opacity: 0.55; }
+    .pieces-note { margin-top: 56px; font-size: 13px; color: var(--muted); max-width: 640px; }
+
+    /* ─── Trade ──────────────────────────────────────────────── */
+    .trade { display: grid; grid-template-columns: 1fr 1fr; gap: 0; padding: 0; }
+    .trade img { width: 100%; height: 100%; object-fit: cover; min-height: 480px; }
+    .trade-text { padding: 96px var(--pad); align-self: center; }
+    .trade-text .h2 { margin: 24px 0 20px; }
+    .trade-list { list-style: none; margin: 28px 0 36px; }
+    .trade-list li { padding: 12px 0; border-bottom: 1px solid var(--border); font-size: 14px; display: flex; gap: 14px; }
+    .trade-list li::before { content: '—'; color: var(--muted); }
+
+    /* ─── Contact ────────────────────────────────────────────── */
+    #contact { background: var(--paper); display: grid; grid-template-columns: 5fr 7fr; gap: 80px; align-items: start; }
+    #contact .h2 { margin: 24px 0 20px; }
+    .contact-fields { margin-top: 40px; display: flex; flex-direction: column; gap: 22px; }
+    .contact-fields small { display: block; font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+    .contact-fields a, .contact-fields span { font-size: 15px; }
+    .contact-fields a:hover { opacity: 0.55; }
+    form { display: grid; grid-template-columns: 1fr 1fr; gap: 20px 16px; background: var(--cream); padding: 40px; border: 1px solid var(--border); }
+    .field { display: flex; flex-direction: column; gap: 8px; }
+    .field.full { grid-column: span 2; }
+    .field label, fieldset legend { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+    .field input, .field select, .field textarea {
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--border);
+      padding: 10px 0;
+      font-size: 15px;
+      outline: none;
+      border-radius: 0;
+      transition: border-color 0.2s;
+    }
+    .field input:focus, .field select:focus, .field textarea:focus { border-bottom-color: var(--ink); }
+    .field textarea { resize: vertical; min-height: 90px; }
+    fieldset { border: none; grid-column: span 2; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+    .chips label { cursor: pointer; }
+    .chips input { position: absolute; opacity: 0; pointer-events: none; }
+    .chips span {
+      display: inline-block; padding: 9px 14px; border: 1px solid var(--border);
+      font-size: 11px; letter-spacing: 0.08em; transition: all 0.15s;
+    }
+    .chips input:checked + span { background: var(--ink); color: var(--cream); border-color: var(--ink); }
+    .chips input:focus-visible + span { outline: 2px solid var(--wood); outline-offset: 2px; }
+    .form-actions { grid-column: span 2; display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-top: 8px; }
+    .form-note { grid-column: span 2; font-size: 11px; color: var(--muted); }
+
+    /* ─── Footer ─────────────────────────────────────────────── */
+    footer {
+      padding: 36px var(--pad);
+      border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;
+      font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted);
+    }
+    footer img { height: 20px; }
+    footer a:hover { color: var(--ink); }
+
+    /* ─── WhatsApp float ─────────────────────────────────────── */
+    .wa-float {
+      position: fixed; right: 20px; bottom: 20px; z-index: 150;
+      display: flex; align-items: center; gap: 10px;
+      background: var(--ink); color: var(--cream);
+      padding: 14px 18px;
+      font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.18);
+      opacity: 0; transform: translateY(12px); pointer-events: none;
+      transition: opacity 0.3s, transform 0.3s;
+    }
+    .wa-float.show { opacity: 1; transform: none; pointer-events: auto; }
+    .wa-float svg { width: 16px; height: 16px; fill: currentColor; }
+
+    /* ─── Lightbox ───────────────────────────────────────────── */
+    .lb {
+      position: fixed; inset: 0; z-index: 300;
+      background: rgba(15,15,15,0.94);
+      display: none; align-items: center; justify-content: center;
+      padding: 56px 72px;
+    }
+    .lb.open { display: flex; }
+    .lb img { max-width: 100%; max-height: 100%; object-fit: contain; }
+    .lb-cap { position: absolute; left: 0; right: 0; bottom: 18px; text-align: center; color: #cfc6bb; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; }
+    .lb button { position: absolute; background: none; border: none; color: #fff; cursor: pointer; font-size: 28px; width: 56px; height: 56px; opacity: 0.75; }
+    .lb button:hover { opacity: 1; }
+    .lb-close { top: 8px; right: 8px; }
+    .lb-prev { left: 8px; top: 50%; transform: translateY(-50%); }
+    .lb-next { right: 8px; top: 50%; transform: translateY(-50%); }
+
+    /* ─── Responsive ─────────────────────────────────────────── */
+    @media (max-width: 1000px) {
+      :root { --pad: 28px; }
+      section { padding: 80px var(--pad); }
+      .strip { grid-template-columns: 1fr 1fr; }
+      .strip div:nth-child(3) { border-left: none; }
+      .strip div:nth-child(n+3) { border-top: 1px solid var(--border); }
+      .paths { grid-template-columns: 1fr; }
+      .path { min-height: 460px; }
+      .paths-head, .sec-head { grid-template-columns: 1fr; display: grid; gap: 20px; }
+      .gallery { columns: 2; }
+      .project { grid-template-columns: 1fr; gap: 32px; }
+      .project-text { position: static; }
+      .custom-cta { flex-direction: column; align-items: flex-start; padding: 32px; }
+      .steps { grid-template-columns: 1fr 1fr; }
+      .step:nth-child(3) { padding-left: 0; border-left: none; }
+      .step { padding-bottom: 32px; }
+      .shop { grid-template-columns: 1fr 1fr; }
+      .shop img:first-child { grid-column: span 2; aspect-ratio: 16/10; }
+      .pieces { grid-template-columns: 1fr 1fr; }
+      .trade { grid-template-columns: 1fr; }
+      .trade img { min-height: 320px; max-height: 420px; }
+      .trade-text { padding: 72px var(--pad); }
+      #contact { grid-template-columns: 1fr; gap: 48px; }
+    }
+    @media (max-width: 700px) {
+      :root { --pad: 16px; }
+      .nav-toggle { display: block; }
+      .nav-links {
+        position: fixed; inset: 0;
+        flex-direction: column; justify-content: center; gap: 28px;
+        background: var(--cream);
+        transform: translateY(-100%); opacity: 0; pointer-events: none;
+        transition: transform 0.3s, opacity 0.3s;
+      }
+      .nav-links.open { transform: none; opacity: 1; pointer-events: auto; }
+      .nav-links a, nav.solid .nav-links a { color: var(--ink); font-size: 14px; }
+      .hero-body { padding-bottom: 40px; }
+      .hero-loc { display: none; }
+      .hero-actions .btn { flex: 1 1 auto; justify-content: center; }
+      .strip { grid-template-columns: 1fr; }
+      .strip div { border-left: none !important; border-top: 1px solid var(--border); padding: 18px var(--pad); }
+      .strip div:first-child { border-top: none; }
+      .path-body { padding: 24px; }
+      .gallery { columns: 1; }
+      .gallery figcaption { opacity: 1; }
+      .project-imgs { grid-template-columns: 1fr; }
+      .project-imgs .wide { grid-column: auto; }
+      .steps { grid-template-columns: 1fr; }
+      .step, .step + .step { padding: 28px 0; border-left: none; border-bottom: 1px solid #2A2520; }
+      .pieces { grid-template-columns: 1fr; }
+      form { grid-template-columns: 1fr; padding: 24px; }
+      .field.full, fieldset, .form-actions, .form-note { grid-column: auto; }
+      .form-actions .btn { flex: 1 1 auto; justify-content: center; }
+      .lb { padding: 56px 8px; }
+      footer { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── Navigation ─────────────────────────────────────── -->
+  <nav id="nav">
+    <a class="nav-logo" href="#top" aria-label="Kodama — home">
+      <img class="on-dark" src="assets/img/logo-wordmark-white.png" alt="KODAMA" />
+      <img class="on-light" src="assets/img/logo-wordmark-v2.png" alt="" />
+    </a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#custom">Custom work</a></li>
+      <li><a href="#furniture">Furniture</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#trade">Architects</a></li>
+      <li><a class="nav-ig" href="https://www.instagram.com/kodama_woodwork/" target="_blank" rel="noopener" aria-label="Kodama on Instagram"><svg class="ig" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4.3" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.4" cy="6.6" r="1.2" fill="currentColor"/></svg></a></li>
+      <li><a class="nav-cta" href="#contact">Start a project</a></li>
+    </ul>
+    <button class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="nav-links">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ─── Hero ──────────────────────────────────────────── -->
+  <header class="hero" id="top">
+    <img src="assets/img/kitchen-view-1600.webp" srcset="assets/img/kitchen-view-800.webp 800w, assets/img/kitchen-view-1600.webp 1600w" sizes="100vw" alt="Custom wood kitchen with a view of the Todos Santos hills" fetchpriority="high" />
+    <div class="hero-body">
+      <div>
+        <h1>Custom kitchens, closets, doors &amp; furniture — made in Todos Santos.</h1>
+        <p>Kodama is a design and woodworking studio. We measure, design, build and install solid-wood pieces made for your home and for life on the Baja coast.</p>
+        <div class="hero-actions">
+          <a class="btn light" href="#contact">Start a project</a>
+          <a class="btn outline-light" href="#custom">See our work</a>
+        </div>
+      </div>
+      <div class="hero-loc">Todos Santos · BCS · Mexico</div>
+    </div>
+  </header>
+
+  <!-- ─── Trust strip ───────────────────────────────────── -->
+  <div class="strip">
+    <div><strong>Since 2018</strong>Woodworking in Baja Sur</div>
+    <div><strong>Our own workshop</strong>Built in Todos Santos</div>
+    <div><strong>Design → install</strong>One team, start to finish</div>
+    <div><strong>Solid hardwoods</strong>Traditional joinery</div>
+  </div>
+
+  <!-- ─── Two paths ─────────────────────────────────────── -->
+  <section id="paths">
+    <p class="label">What we make</p>
+    <div class="paths-head">
+      <h2 class="h2">Two ways to work with us.</h2>
+      <p class="lede">Most of our clients come to us for made-to-measure pieces for their homes. We also design and build our own collection of furniture, each piece made to order.</p>
+    </div>
+    <div class="paths">
+      <a class="path" href="#custom">
+        <img src="assets/img/wardrobe-wide-1600.webp" srcset="assets/img/wardrobe-wide-800.webp 800w, assets/img/wardrobe-wide-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 58vw" alt="Floor-to-ceiling wood wardrobe doors" loading="lazy" />
+        <div class="path-body">
+          <p class="path-tag">01 — Made to measure</p>
+          <h3>Custom woodwork for your home</h3>
+          <p>Kitchens, closets and wardrobes, built-in shelving, doors, shutters, vanities and beds, designed around your space and built to fit.</p>
+          <span class="path-more">See custom work →</span>
+        </div>
+      </a>
+      <a class="path" href="#furniture">
+        <img src="assets/img/chair-lounge-stone-1600.webp" srcset="assets/img/chair-lounge-stone-800.webp 800w, assets/img/chair-lounge-stone-1600.webp 1600w" sizes="(max-width: 1000px) 100vw, 42vw" alt="Low wood lounge chair and footstool against a stone wall" loading="lazy" style="object-position: 40% 50%" />
+        <div class="path-body">
+          <p class="path-tag">02 — Studio furniture</p>
+          <h3>Kodama pieces</h3>
+          <p>Chairs, tables, stools, lamps and boards from our own designs. Each one made to order in solid wood.</p>
+          <span class="path-more">See the collection →</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ─── Custom work ───────────────────────────────────── -->
+  <section id="custom">
+    <p class="label">01 — Made to measure</p>
+    <div class="sec-head">
+      <h2 class="h2">Built for your space,<br>down to the millimetre.</h2>
+      <p class="lede">We visit your home, take measurements, and design each piece with you. Then we build it in our workshop and install it ourselves.</p>
+    </div>
+
+    <div class="cats" role="group" aria-label="Filter projects">
+      <button type="button" data-filter="all" aria-pressed="true">All</button>
+      <button type="button" data-filter="kitchen" aria-pressed="false">Kitchens</button>
+      <button type="button" data-filter="closet" aria-pressed="false">Closets &amp; built-ins</button>
+      <button type="button" data-filter="door" aria-pressed="false">Doors &amp; shutters</button>
+      <button type="button" data-filter="bath" aria-pressed="false">Bathrooms</button>
+    </div>
+
+    <div class="gallery" id="gallery">
+      <figure data-cat="kitchen"><img src="assets/img/kitchen-island-800.webp" data-full="assets/img/kitchen-island-1600.webp" width="800" height="600" alt="Kitchen island with wood drawers and concrete waterfall counter" loading="lazy" /><figcaption>Kitchen island — wood &amp; concrete</figcaption></figure>
+      <figure data-cat="door"><img src="assets/img/door-louver-800.webp" data-full="assets/img/door-louver-1600.webp" width="800" height="1067" alt="Solid wood louvered door" loading="lazy" /><figcaption>Louvered door</figcaption></figure>
+      <figure data-cat="closet"><img src="assets/img/wardrobe-room-800.webp" data-full="assets/img/wardrobe-room-1600.webp" width="800" height="600" alt="Built-in wardrobe with figured wood doors" loading="lazy" /><figcaption>Built-in wardrobe</figcaption></figure>
+      <figure data-cat="bath"><img src="assets/img/vanity-double-800.webp" data-full="assets/img/vanity-double-1600.webp" width="800" height="600" alt="Bathroom vanity with wood drawers" loading="lazy" /><figcaption>Bathroom vanity</figcaption></figure>
+      <figure data-cat="door"><img src="assets/img/door-entry-800.webp" data-full="assets/img/door-entry-1600.webp" width="800" height="1067" alt="Solid wood entry door" loading="lazy" /><figcaption>Entry door</figcaption></figure>
+      <figure data-cat="kitchen"><img src="assets/img/kitchen-concrete-800.webp" data-full="assets/img/kitchen-concrete-1600.webp" width="800" height="600" alt="L-shaped kitchen with wood doors set in concrete counters" loading="lazy" /><figcaption>Kitchen — wood fronts in concrete</figcaption></figure>
+      <figure data-cat="door"><img src="assets/img/shutter-window-800.webp" data-full="assets/img/shutter-window-1600.webp" width="800" height="1067" alt="Pair of wood window shutters" loading="lazy" /><figcaption>Window shutters</figcaption></figure>
+      <figure data-cat="closet"><img src="assets/img/wardrobe-detail-800.webp" data-full="assets/img/wardrobe-detail-1600.webp" width="800" height="1067" alt="Wardrobe doors with wood pulls" loading="lazy" /><figcaption>Wardrobe — detail</figcaption></figure>
+      <figure data-cat="bath"><img src="assets/img/vanity-open-800.webp" data-full="assets/img/vanity-open-1600.webp" width="800" height="600" alt="Open wood vanity with shelf" loading="lazy" /><figcaption>Open vanity</figcaption></figure>
+      <figure data-cat="kitchen"><img src="assets/img/kitchen-grain-800.webp" data-full="assets/img/kitchen-grain-1600.webp" width="800" height="600" alt="Close-up of kitchen cabinet doors with book-matched grain" loading="lazy" /><figcaption>Kitchen — grain-matched doors</figcaption></figure>
+      <figure data-cat="door"><img src="assets/img/door-screen-800.webp" data-full="assets/img/door-screen-1600.webp" width="800" height="1067" alt="Wood screen door under a palapa roof" loading="lazy" /><figcaption>Screen door</figcaption></figure>
+      <figure data-cat="closet"><img src="assets/img/shelving-niche-800.webp" data-full="assets/img/shelving-niche-1600.webp" width="800" height="1422" alt="Wood shelves set into a plaster niche" loading="lazy" /><figcaption>Pantry shelving</figcaption></figure>
+      <figure data-cat="bath"><img src="assets/img/vanity-floating-800.webp" data-full="assets/img/vanity-floating-1600.webp" width="800" height="600" alt="Dark wood floating vanity" loading="lazy" /><figcaption>Floating vanity</figcaption></figure>
+      <figure data-cat="door"><img src="assets/img/shutters-trio-800.webp" data-full="assets/img/shutters-trio-1600.webp" width="800" height="600" alt="Three small wood shutters in a plaster wall" loading="lazy" /><figcaption>Wall shutters</figcaption></figure>
+      <figure data-cat="door"><img src="assets/img/door-slatted-800.webp" data-full="assets/img/door-slatted-1600.webp" width="800" height="1067" alt="Slatted wood sliding door" loading="lazy" /><figcaption>Slatted door</figcaption></figure>
+      <figure data-cat="closet"><img src="assets/img/media-cabinet-800.webp" data-full="assets/img/media-cabinet-1600.webp" width="800" height="600" alt="Wood media cabinet with figured panels" loading="lazy" /><figcaption>Media cabinet</figcaption></figure>
+    </div>
+
+    <!-- Featured project -->
+    <article class="project">
+      <div class="project-text">
+        <p class="label">Featured project</p>
+        <h3 class="h2">A whole-house fit-out in Todos Santos.</h3>
+        <p class="lede">Kitchen, island, bathroom vanities, living room shelving and interior doors for one home, designed as a set so the wood, hardware and details match room to room.</p>
+        <div class="project-specs">
+          <div><span>Scope</span><span>Kitchen · island · 2 vanities · shelving · doors</span></div>
+          <div><span>Materials</span><span>Birch ply + solid mahogany</span></div>
+          <div><span>Location</span><span>Todos Santos, BCS</span></div>
+        </div>
+      </div>
+      <div class="project-imgs">
+        <div class="wide"><img src="assets/img/kitchen-wide-1600.webp" data-full="assets/img/kitchen-wide-1600.webp" alt="Full kitchen with wood island and range wall" loading="lazy" /></div>
+        <img src="assets/img/kitchen-run-800.webp" data-full="assets/img/kitchen-run-1600.webp" alt="Kitchen cabinets with black pulls" loading="lazy" />
+        <img src="assets/img/vanity-bath-800.webp" data-full="assets/img/vanity-bath-1600.webp" alt="Double vanity with vessel sinks" loading="lazy" />
+        <img src="assets/img/kitchen-shelves-800.webp" data-full="assets/img/kitchen-shelves-1600.webp" alt="Kitchen with floating shelves and birch ply cabinet fronts" loading="lazy" />
+        <img src="assets/img/library-builtin-800.webp" data-full="assets/img/library-builtin-1600.webp" alt="Living room built-in shelving" loading="lazy" />
+        <img class="tall" src="assets/img/doors-birch-800.webp" data-full="assets/img/doors-birch-1600.webp" alt="Birch ply interior doors with black handles" loading="lazy" />
+        <img class="tall" src="assets/img/door-open-800.webp" data-full="assets/img/door-open-1600.webp" alt="Solid wood pivot entry door, open" loading="lazy" />
+      </div>
+    </article>
+
+    <div class="custom-cta">
+      <p><strong>Planning a kitchen, closet or doors?</strong>Send us your plans, a few photos of the space, or just an idea. We'll reply with next steps and a time to visit.</p>
+      <a class="btn" href="#contact">Get a quote</a>
+    </div>
+  </section>
+
+  <!-- ─── Process ───────────────────────────────────────── -->
+  <section id="process">
+    <p class="label">02 — How it works</p>
+    <div class="sec-head">
+      <h2 class="h2">From first visit<br>to final install.</h2>
+      <p class="lede">One team handles your project from start to finish, so what we draw is what we build.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><p class="step-num">01</p><h3>Visit &amp; measure</h3><p>We come to your home or job site, take measurements and talk through how you'll use the space.</p></div>
+      <div class="step"><p class="step-num">02</p><h3>Design &amp; quote</h3><p>You get drawings, wood and finish options, and a clear quote with a timeline.</p></div>
+      <div class="step"><p class="step-num">03</p><h3>Build</h3><p>Everything is made in our Todos Santos workshop, in solid wood with traditional joinery.</p></div>
+      <div class="step"><p class="step-num">04</p><h3>Install</h3><p>We deliver and install ourselves, and adjust on site until every door and drawer runs right.</p></div>
+    </div>
+    <div class="shop">
+      <img src="assets/img/shop-team-1600.webp" alt="Two woodworkers planning a piece at the workbench" loading="lazy" />
+      <img src="assets/img/shop-carving-800.webp" alt="Woodworker shaping a piece with a grinder" loading="lazy" />
+      <img src="assets/img/joint-butterfly-800.webp" alt="Butterfly joint inlaid across a crack in a slab" loading="lazy" style="filter:none" />
+    </div>
+  </section>
+
+  <!-- ─── Furniture ─────────────────────────────────────── -->
+  <section id="furniture">
+    <p class="label">03 — Studio furniture</p>
+    <div class="sec-head">
+      <h2 class="h2">Kodama pieces,<br>made to order.</h2>
+      <p class="lede">Our own designs, built one at a time from solid wood. Sizes and woods can be adjusted. Tap “Inquire” on any piece to ask about price and timing.</p>
+    </div>
+    <div class="pieces">
+      <div class="piece">
+        <div class="piece-img"><img src="assets/img/chair-lounge-set-800.webp" data-full="assets/img/chair-lounge-set-1600.webp" alt="Low lounge chair with matching footstool" loading="lazy" /></div>
+        <div class="piece-meta"><div><h3>Lounge chair &amp; stool</h3><p class="wood">Solid wood · set</p></div><a class="ask" href="#" data-piece="Lounge chair & stool">Inquire</a></div>
+      </div>
+      <div class="piece">
+        <div class="piece-img"><img src="assets/img/stool-tripod-800.webp" data-full="assets/img/stool-tripod-1600.webp" alt="Geometric tripod stool in mixed hardwood" loading="lazy" /></div>
+        <div class="piece-meta"><div><h3>Tripod stool</h3><p class="wood">Mixed hardwood</p></div><a class="ask" href="#" data-piece="Tripod stool">Inquire</a></div>
+      </div>
+      <div class="piece">
+        <div class="piece-img"><img src="assets/img/sideboard-800.webp" data-full="assets/img/sideboard-1600.webp" alt="Wood sideboard with figured panels" loading="lazy" /></div>
+        <div class="piece-meta"><div><h3>Sideboard</h3><p class="wood">Figured panels</p></div><a class="ask" href="#" data-piece="Sideboard">Inquire</a></div>
+      </div>
+      <div class="piece">
+        <div class="piece-img"><img src="assets/img/table-coffee-round-800.webp" data-full="assets/img/table-coffee-round-1600.webp" alt="Round live-edge coffee table" loading="lazy" /></div>
+        <div class="piece-meta"><div><h3>Round slab coffee table</h3><p class="wood">Live edge</p></div><a class="ask" href="#" data-piece="Round slab coffee table">Inquire</a></div>
+      </div>
+      <div class="piece">
+        <div class="piece-img"><img src="assets/img/sidetable-lamp-800.webp" data-full="assets/img/sidetable-lamp-1600.webp" alt="Waterfall side table with a small lamp" loading="lazy" /></div>
+        <div class="piece-meta"><div><h3>Waterfall side table</h3><p class="wood">Solid wood</p></div><a class="ask" href="#" data-piece="Waterfall side table">Inquire</a></div>
+      </div>
+      <div class="piece">
+        <div class="piece-img"><img src="assets/img/chair-spalted-800.webp" data-full="assets/img/chair-spalted-1600.webp" alt="Dining chair with spalted wood back" loading="lazy" /></div>
+        <div class="piece-meta"><div><h3>Spalted chair</h3><p class="wood">Spalted hardwood</p></div><a class="ask" href="#" data-piece="Spalted chair">Inquire</a></div>
+      </div>
+      <div class="piece">
+        <div class="piece-img"><img src="assets/img/table-walnut-800.webp" data-full="assets/img/table-walnut-1600.webp" alt="Dark wood table with slab legs on the workbench" loading="lazy" /></div>
+        <div class="piece-meta"><div><h3>Slab table</h3><p class="wood">Dark hardwood</p></div><a class="ask" href="#" data-piece="Slab table">Inquire</a></div>
+      </div>
+      <div class="piece">
+        <div class="piece-img"><img src="assets/img/bench-walnut-800.webp" data-full="assets/img/bench-walnut-800.webp" alt="Bench in two-tone walnut" loading="lazy" /></div>
+        <div class="piece-meta"><div><h3>Bench</h3><p class="wood">Two-tone walnut</p></div><a class="ask" href="#" data-piece="Walnut bench">Inquire</a></div>
+      </div>
+      <div class="piece">
+        <div class="piece-img"><img src="assets/img/surfboard-beach-800.webp" data-full="assets/img/surfboard-beach-1600.webp" alt="Wooden surfboard standing on the beach" loading="lazy" /></div>
+        <div class="piece-meta"><div><h3>Wooden surfboard</h3><p class="wood">Display or ride</p></div><a class="ask" href="#" data-piece="Wooden surfboard">Inquire</a></div>
+      </div>
+    </div>
+    <p class="pieces-note">Want a piece in a different size or wood? Every design can be adapted. Ask us.</p>
+  </section>
+
+  <!-- ─── Trade ─────────────────────────────────────────── -->
+  <section id="trade" class="trade">
+    <img src="assets/img/louver-bench-1600.webp" alt="Louvered doors in progress on the workshop bench" loading="lazy" />
+    <div class="trade-text">
+      <p class="label">04 — For architects &amp; builders</p>
+      <h2 class="h2">Your woodwork partner in Baja Sur.</h2>
+      <p class="lede">We work with architects, interior designers and contractors on homes and hospitality projects across the West Cape.</p>
+      <ul class="trade-list">
+        <li>Build from your drawings, or develop shop drawings with you</li>
+        <li>Kitchens, closets, doors and furniture for a whole project</li>
+        <li>Local workshop: site visits and adjustments without delays</li>
+      </ul>
+      <a class="btn ghost" href="#contact" data-type="Architect / builder project">Send us a project</a>
+    </div>
+  </section>
+
+  <!-- ─── Contact ───────────────────────────────────────── -->
+  <section id="contact">
+    <div>
+      <p class="label">05 — Start a project</p>
+      <h2 class="h2">Tell us about your project.</h2>
+      <p class="lede">A few details help us reply with a useful answer. The form opens WhatsApp with your message ready to send. Prefer email? Use the second button.</p>
+      <div class="contact-fields">
+        <div><small>WhatsApp / Phone</small><a href="https://wa.me/526121686201" target="_blank" rel="noopener">+52 612 168 6201</a></div>
+        <div><small>Email</small><a href="mailto:kodamabaja@gmail.com">kodamabaja@gmail.com</a></div>
+        <div><small>Instagram</small><a class="contact-ig" href="https://www.instagram.com/kodama_woodwork/" target="_blank" rel="noopener"><svg class="ig" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4.3" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.4" cy="6.6" r="1.2" fill="currentColor"/></svg>@kodama_woodwork</a></div>
+        <div><small>Workshop</small><span>Todos Santos, Baja California Sur</span></div>
+      </div>
+    </div>
+
+    <form id="lead" novalidate>
+      <fieldset>
+        <legend>What do you need?</legend>
+        <div class="chips">
+          <label><input type="checkbox" name="type" value="Kitchen" /><span>Kitchen</span></label>
+          <label><input type="checkbox" name="type" value="Closet / wardrobe" /><span>Closet / wardrobe</span></label>
+          <label><input type="checkbox" name="type" value="Doors / shutters" /><span>Doors / shutters</span></label>
+          <label><input type="checkbox" name="type" value="Bathroom vanity" /><span>Bathroom vanity</span></label>
+          <label><input type="checkbox" name="type" value="Bed" /><span>Bed</span></label>
+          <label><input type="checkbox" name="type" value="Built-in shelving" /><span>Built-in shelving</span></label>
+          <label><input type="checkbox" name="type" value="Furniture piece" /><span>Furniture piece</span></label>
+          <label><input type="checkbox" name="type" value="Architect / builder project" /><span>Architect / builder project</span></label>
+        </div>
+      </fieldset>
+      <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" autocomplete="name" /></div>
+      <div class="field"><label for="f-where">Where is the project?</label>
+        <select id="f-where" name="where">
+          <option value="">Choose…</option>
+          <option>Todos Santos</option>
+          <option>El Pescadero / Cerritos</option>
+          <option>La Paz</option>
+          <option>Los Cabos</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="field"><label for="f-when">When do you need it?</label>
+        <select id="f-when" name="when">
+          <option value="">Choose…</option>
+          <option>As soon as possible</option>
+          <option>In 1–3 months</option>
+          <option>In 3–6 months</option>
+          <option>Just exploring</option>
+        </select>
+      </div>
+      <div class="field"><label for="f-stage">Stage of the home</label>
+        <select id="f-stage" name="stage">
+          <option value="">Choose…</option>
+          <option>Under construction</option>
+          <option>Renovating</option>
+          <option>Finished home</option>
+        </select>
+      </div>
+      <div class="field full"><label for="f-msg">Tell us more</label><textarea id="f-msg" name="msg" placeholder="Sizes, wood you like, a link to a photo… anything helps."></textarea></div>
+      <div class="form-actions">
+        <button class="btn" type="submit">Send on WhatsApp</button>
+        <button class="btn ghost" type="button" id="send-email">Send by email</button>
+      </div>
+      <p class="form-note">Have plans or photos of the space? Attach them in the WhatsApp chat or email after sending.</p>
+    </form>
+  </section>
+
+  <!-- ─── Footer ────────────────────────────────────────── -->
+  <footer>
+    <img src="assets/img/logo-wordmark-v2.png" alt="KODAMA" />
+    <span>© <span id="year"></span> Kodama Woodwork · Todos Santos, BCS</span>
+    <a class="footer-ig" href="https://www.instagram.com/kodama_woodwork/" target="_blank" rel="noopener" aria-label="Kodama on Instagram"><svg class="ig" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4.3" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.4" cy="6.6" r="1.2" fill="currentColor"/></svg>@kodama_woodwork</a>
+  </footer>
+
+  <a class="wa-float" id="wa-float" href="https://wa.me/526121686201?text=Hi%20Kodama%2C%20I%20saw%20your%20website%20and%20I%27d%20like%20to%20talk%20about%20a%20project." target="_blank" rel="noopener" aria-label="Message Kodama on WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3Z"/></svg>
+    WhatsApp us
+  </a>
+
+  <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Image viewer">
+    <button class="lb-close" aria-label="Close">×</button>
+    <button class="lb-prev" aria-label="Previous">‹</button>
+    <img alt="" />
+    <button class="lb-next" aria-label="Next">›</button>
+    <p class="lb-cap"></p>
+  </div>
+
+  <script>
+    const WA = '526121686201';
+    const EMAIL = 'kodamabaja@gmail.com';
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Nav: solid background after the hero, mobile toggle
+    const nav = document.getElementById('nav');
+    const waFloat = document.getElementById('wa-float');
+    const onScroll = () => {
+      const past = window.scrollY > window.innerHeight * 0.75;
+      nav.classList.toggle('solid', window.scrollY > 40);
+      const atEnd = window.innerHeight + window.scrollY > document.body.scrollHeight - 120;
+      waFloat.classList.toggle('show', past && !atEnd);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    const navToggle = document.querySelector('.nav-toggle');
+    const navLinks = document.getElementById('nav-links');
+    navToggle.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      navToggle.classList.toggle('open', open);
+      navToggle.setAttribute('aria-expanded', String(open));
+    });
+    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      navToggle.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    }));
+
+    // Custom work filter
+    const figs = [...document.querySelectorAll('#gallery figure')];
+    document.querySelectorAll('.cats button').forEach(btn => btn.addEventListener('click', () => {
+      document.querySelectorAll('.cats button').forEach(b => b.setAttribute('aria-pressed', String(b === btn)));
+      const f = btn.dataset.filter;
+      figs.forEach(fig => { fig.hidden = f !== 'all' && fig.dataset.cat !== f; });
+    }));
+
+    // Lightbox over every zoomable image currently visible
+    const lb = document.getElementById('lb');
+    const lbImg = lb.querySelector('img');
+    const lbCap = lb.querySelector('.lb-cap');
+    let set = [], idx = 0;
+    const zoomables = () => [...document.querySelectorAll('img[data-full]')].filter(i => i.offsetParent !== null);
+    const show = i => {
+      idx = (i + set.length) % set.length;
+      const img = set[idx];
+      lbImg.src = img.dataset.full;
+      lbImg.alt = img.alt;
+      lbCap.textContent = img.closest('figure')?.querySelector('figcaption')?.textContent || img.alt;
+    };
+    document.addEventListener('click', e => {
+      const img = e.target.closest('img[data-full]');
+      if (!img) return;
+      set = zoomables();
+      show(set.indexOf(img));
+      lb.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+    const closeLb = () => { lb.classList.remove('open'); document.body.style.overflow = ''; };
+    lb.querySelector('.lb-close').addEventListener('click', closeLb);
+    lb.querySelector('.lb-prev').addEventListener('click', () => show(idx - 1));
+    lb.querySelector('.lb-next').addEventListener('click', () => show(idx + 1));
+    lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
+    document.addEventListener('keydown', e => {
+      if (!lb.classList.contains('open')) return;
+      if (e.key === 'Escape') closeLb();
+      if (e.key === 'ArrowLeft') show(idx - 1);
+      if (e.key === 'ArrowRight') show(idx + 1);
+    });
+
+    // Furniture "Inquire" → WhatsApp with the piece name
+    document.querySelectorAll('.ask').forEach(a => a.addEventListener('click', e => {
+      e.preventDefault();
+      const msg = `Hi Kodama, I'm interested in the ${a.dataset.piece} from your website. Could you tell me about price and timing?`;
+      window.open(`https://wa.me/${WA}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener');
+    }));
+
+    // "Send us a project" pre-selects the architect chip
+    document.querySelectorAll('a[data-type]').forEach(a => a.addEventListener('click', () => {
+      const box = document.querySelector(`#lead input[value="${a.dataset.type}"]`);
+      if (box) box.checked = true;
+    }));
+
+    // Lead form → composed message for WhatsApp or email
+    const form = document.getElementById('lead');
+    const compose = () => {
+      const d = new FormData(form);
+      const types = d.getAll('type');
+      const lines = ['Hi Kodama, I found you through your website.'];
+      if (d.get('name')) lines.push(`Name: ${d.get('name')}`);
+      if (types.length) lines.push(`Project: ${types.join(', ')}`);
+      if (d.get('where')) lines.push(`Location: ${d.get('where')}`);
+      if (d.get('when')) lines.push(`Timing: ${d.get('when')}`);
+      if (d.get('stage')) lines.push(`Home: ${d.get('stage')}`);
+      if (d.get('msg')) lines.push('', d.get('msg'));
+      return lines.join('\n');
+    };
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      window.open(`https://wa.me/${WA}?text=${encodeURIComponent(compose())}`, '_blank', 'noopener');
+    });
+    document.getElementById('send-email').addEventListener('click', () => {
+      const types = new FormData(form).getAll('type');
+      const subject = `Project inquiry${types.length ? ' — ' + types.join(', ') : ''}`;
+      location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(compose())}`;
+    });
+  </script>
+</body>
+</html>
