@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "kodama",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["/private/tmp/claude-501/-Users-santigenman-Desktop-Claude-Kodama-Landing-Page/72f06ffc-7a12-4012-8bae-8361ae71d229/scratchpad/serve.py"],
+      "port": 3456
+    }
+  ]
+}
