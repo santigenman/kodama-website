@@ -4,6 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kodama Woodwork — Custom Kitchens, Closets, Doors &amp; Furniture · Todos Santos</title>
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png" />
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
   <meta name="description" content="Kodama is a design and woodworking studio in Todos Santos, Baja California Sur. Custom kitchens, closets, built-ins, doors, vanities and one-of-a-kind furniture — designed, built and installed by our own workshop." />
   <meta property="og:title" content="Kodama Woodwork — Todos Santos, BCS" />
   <meta property="og:description" content="Custom kitchens, closets, doors and furniture, made in our Todos Santos workshop." />
@@ -344,6 +347,8 @@
     }
     .chips input:checked + span { background: var(--ink); color: var(--cream); border-color: var(--ink); }
     .chips input:focus-visible + span { outline: 2px solid var(--wood); outline-offset: 2px; }
+    .other-type { margin-top: 14px; }
+    .other-type[hidden] { display: none; }
     .form-actions { grid-column: span 2; display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-top: 8px; }
     .form-note { grid-column: span 2; font-size: 11px; color: var(--muted); }
 
@@ -613,24 +618,24 @@
     </div>
     <div class="pieces">
       <div class="piece">
-        <div class="piece-img"><img src="assets/img/piece-1-800.webp" data-full="assets/img/piece-1-1600.webp" alt="Hexagonal-top stool with three wood legs" loading="lazy" /></div>
-        <div class="piece-meta"><div><h3>Pieza 1</h3><p class="wood">Descripción</p></div><a class="ask" href="#" data-piece="Pieza 1">Inquire</a></div>
+        <div class="piece-img"><img src="assets/img/piece-1-800.webp" data-full="assets/img/piece-1-1600.webp" alt="Faceted stool in solid Parota wood" loading="lazy" /></div>
+        <div class="piece-meta"><div><h3>Facets stool</h3><p class="wood">Solid Parota wood</p></div><a class="ask" href="#" data-piece="Facets stool">Inquire</a></div>
       </div>
       <div class="piece">
-        <div class="piece-img"><img src="assets/img/piece-2-800.webp" data-full="assets/img/piece-2-1600.webp" alt="Solid wood chair with spalted back" loading="lazy" /></div>
-        <div class="piece-meta"><div><h3>Pieza 2</h3><p class="wood">Descripción</p></div><a class="ask" href="#" data-piece="Pieza 2">Inquire</a></div>
+        <div class="piece-img"><img src="assets/img/piece-2-800.webp" data-full="assets/img/piece-2-1600.webp" alt="Prototype chair in solid Parota wood" loading="lazy" /></div>
+        <div class="piece-meta"><div><h3>Prototype chair</h3><p class="wood">Solid Parota wood</p></div><a class="ask" href="#" data-piece="Prototype chair">Inquire</a></div>
       </div>
       <div class="piece">
-        <div class="piece-img"><img src="assets/img/piece-3-800.webp" data-full="assets/img/piece-3-1600.webp" alt="Live-edge side table on a crossed base" loading="lazy" /></div>
-        <div class="piece-meta"><div><h3>Pieza 3</h3><p class="wood">Descripción</p></div><a class="ask" href="#" data-piece="Pieza 3">Inquire</a></div>
+        <div class="piece-img"><img src="assets/img/piece-3-800.webp" data-full="assets/img/piece-3-1600.webp" alt="NK.01 side table in solid walnut on a crossed base" loading="lazy" /></div>
+        <div class="piece-meta"><div><h3>NK.01 side table</h3><p class="wood">Solid Walnut wood</p></div><a class="ask" href="#" data-piece="NK.01 side table">Inquire</a></div>
       </div>
       <div class="piece">
-        <div class="piece-img"><img src="assets/img/piece-4-800.webp" data-full="assets/img/piece-4-1600.webp" alt="Low dark wood bench with slab legs" loading="lazy" /></div>
-        <div class="piece-meta"><div><h3>Pieza 4</h3><p class="wood">Descripción</p></div><a class="ask" href="#" data-piece="Pieza 4">Inquire</a></div>
+        <div class="piece-img"><img src="assets/img/piece-4-800.webp" data-full="assets/img/piece-4-1600.webp" alt="SP.01 dovetailed side table in solid walnut" loading="lazy" /></div>
+        <div class="piece-meta"><div><h3>SP.01 side table</h3><p class="wood">Dovetail solid Walnut wood</p></div><a class="ask" href="#" data-piece="SP.01 side table">Inquire</a></div>
       </div>
       <div class="piece">
-        <div class="piece-img"><img src="assets/img/piece-5-800.webp" data-full="assets/img/piece-5-1600.webp" alt="Low round coffee table cut from a single log" loading="lazy" /></div>
-        <div class="piece-meta"><div><h3>Pieza 5</h3><p class="wood">Descripción</p></div><a class="ask" href="#" data-piece="Pieza 5">Inquire</a></div>
+        <div class="piece-img"><img src="assets/img/piece-5-800.webp" data-full="assets/img/piece-5-1600.webp" alt="Floating low table in solid ash on hidden wheels" loading="lazy" /></div>
+        <div class="piece-meta"><div><h3>Floating low table</h3><p class="wood">Solid Ash wood table on hidden wheels</p></div><a class="ask" href="#" data-piece="Floating low table">Inquire</a></div>
       </div>
     </div>
     <p class="pieces-note">Want a piece in a different size or wood? Every design can be adapted. Ask us.</p>
@@ -678,7 +683,9 @@
           <label><input type="checkbox" name="type" value="Built-in shelving" /><span>Built-in shelving</span></label>
           <label><input type="checkbox" name="type" value="Furniture piece" /><span>Furniture piece</span></label>
           <label><input type="checkbox" name="type" value="Architect / builder project" /><span>Architect / builder project</span></label>
+          <label><input type="checkbox" name="type" value="Other" id="f-other" aria-controls="f-other-type-wrap" /><span>Other</span></label>
         </div>
+        <div class="field other-type" id="f-other-type-wrap" hidden><label for="f-other-type">What's your project?</label><input id="f-other-type" name="otherType" placeholder="e.g. Outdoor pergola" /></div>
       </fieldset>
       <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" autocomplete="name" /></div>
       <div class="field"><label for="f-where">Where is the project?</label>
@@ -821,11 +828,20 @@
       if (box) box.checked = true;
     }));
 
+    // "Other" chip reveals a free-text project field
+    const otherBox = document.getElementById('f-other');
+    const otherWrap = document.getElementById('f-other-type-wrap');
+    otherBox.addEventListener('change', () => {
+      otherWrap.hidden = !otherBox.checked;
+      if (otherBox.checked) otherWrap.querySelector('input').focus();
+    });
+
     // Lead form → composed message for WhatsApp or email
     const form = document.getElementById('lead');
     const compose = () => {
       const d = new FormData(form);
-      const types = d.getAll('type');
+      const other = (d.get('otherType') || '').trim();
+      const types = d.getAll('type').map(t => t === 'Other' && other ? `Other: ${other}` : t);
       const lines = ['Hi Kodama, I found you through your website.'];
       if (d.get('name')) lines.push(`Name: ${d.get('name')}`);
       if (types.length) lines.push(`Project: ${types.join(', ')}`);
